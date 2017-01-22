@@ -1,0 +1,44 @@
+ClrDraw
+AxesOff
+ZStandard
+104→Xmax
+⁻72→Ymin
+ZInteger
+
+// Textsprites, each 6 characters
+// (5 in actual pixel width + 1 to mask extra pixels on the right)
+"      :::::  [ [  :²+Y   Y+²:  J+1: :1+J  :] [  :²﹢²:  [ ]: :1^1: :X X: →Str1
+
+// We're keeping level data here for now
+// The level data is a certain number for a certain tile
+// 0    = empty
+// 1-11 = wires
+// more to be added
+[[5,10,6][9,11,7][2,4,7][4,1,3→[A]
+
+// A will be the current Y-value, from 1 to 4
+For(A,1,4
+// B will be the current X-value, from 1 to 3
+For(B,1,3
+// Draw a box around the current square
+Line(6B-6,6-6A,6B,6-6A
+Line(6B-6,6-6A,6B-6,⁻6A
+Line(6B,6-6A,6B,⁻6A
+Line(6B-6,⁻6A,6B,⁻6A
+Pt-Off(6B-3,6-6A
+Pt-Off(6B-3,⁻6A
+Pt-Off(6B-6,3-6A
+Pt-Off(6B,3-6A
+
+// Draw the current textsprite
+StorePic 1
+For(C,0,5
+// Actually draw each character
+Text(6A-6,6B-5+C,sub(Str1,6[A](A,B)+C+1,1
+End
+RecallPic 1
+
+// End iterating B
+End
+// End iterating A
+End
