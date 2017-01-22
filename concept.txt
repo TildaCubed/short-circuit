@@ -1,0 +1,12 @@
+Puzzle game for the TI monochrome z80 models. Written in pure BASIC.
+Story/Art:
+You're trying to connect wires inside a computer to get it working again.
+A game with a computer-based story and aesthetics.
+
+Gameplay:
+Connecting different "wires" so that they link up (wire in 1 to wire out 1, etc.)
+Deal with different obstables, multiple wires, etc.
+Game starts extremely simple to teach the concepts, then starts adding on to it as the levels progress.
+
+Behind-The-Scenes Ideas:
+Some kind of password system? Save the level in a custom list?
