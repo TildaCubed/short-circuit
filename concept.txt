@@ -13,6 +13,13 @@ Outlets - sources of electrical energy, you will have to connect these to each o
 Wires - connect these to allow energy to flow from one place to another
 Logic Gates (AND, OR, and NOT) - 1 or 2 wires connect, and a signal result comes out
 Diodes - allow electrical energy to flow one way, but not the other
+Have a limited amount of wires, logic gates, diodes, etc. to complete the level
+Each level can have multiple inlets/outlets, of different types or the same types.
+(Up to 3 types: 
+* ###########
+* # # # # # #
+* ## ## ## ##
+)
 
 Behind-The-Scenes Ideas:
 Some kind of password system? Save the level in a custom list?
