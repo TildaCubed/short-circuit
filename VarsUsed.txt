@@ -1,7 +1,7 @@
 Vars Used: (Lowercase/no description until used)
-a
-b
-c
+A - temporary counter variable, used for Y
+B - temporary counter variable, used for X
+C - used for looping through each character of the textsprite
 d
 e
 f
@@ -25,8 +25,9 @@ w
 x
 y
 z
+[A] - temporary storage space for tiles, 4x3
 str0
-str1
+Str1 - characters in textsprites, each of length 6 chars
 str2
 str3
 str4
