@@ -7,7 +7,7 @@ ZInteger
 
 // Textsprites, each 7 characters
 // (5 in actual pixel width + 2 to mask extra pixels on the right)
-"       :::::   [ [   :²+Y    Y+²:   J+1:  :1+J   :] [   :²﹢²:   [ ]:  :1^1:  :X X:  [[[[(  [[[[:  Q[[[Q  Q[Q[Q  ([[[[  :[[[[  |u[[[|u  |u[|u[|u  []X[(  []X[:  Q[i]2[i]Q  Q[i]²[i]Q  ([X][  :[X][  |u!Î!|u  |u!1!|u  [XX[(  [XX[:  Q[2[Q  Q[²[Q  ([XX[  :[XX[  |u[Î[|u  |u[1[|u  []]](  Q]]]Q  (]]][  |u]]]|u  Xẋ]:+  '²1²'  +:]ẋX  plotsquare1²1plotsquare  []ẋ:+  '²ẋ²'  +:ẋ][  plotsquare1ẋ₁plotsquare  +[]:+  °:Î:°  +:][+  [e]ẋ₂ẋ[e]  →Str1
+"       :::::   [ [   :²+Y    Y+²:   J+1:  :1+J   :] [   :²﹢²:   [ ]:  :1^1:  :X X:  [[[[(  [[[[:  Q[[[Q  Q[Q[Q  ([[[[  :[[[[  |u[[[|u  |u[|u[|u  []X[(  []X[:  Q[i]2[i]Q  Q[i]²[i]Q  ([X][  :[X][  |u!Î!|u  |u!1!|u  [XX[(  [XX[:  Q[2[Q  Q[²[Q  ([XX[  :[XX[  |u[Î[|u  |u[1[|u  []]](  Q]]]Q  (]]][  |u]]]|u  Xẋ]:+  '²1²'  +:]ẋX  plotsquare1²1plotsquare  []ẋ:+  '²ẋ²'  +:ẋ][  plotsquare1ẋ₁plotsquare  +[]:+  °:Î:°  +:][+  [e]:2:[e]  →Str1
 // We're keeping level data here for now
 // The level data is a certain number for a certain tile
 // 0    = empty
