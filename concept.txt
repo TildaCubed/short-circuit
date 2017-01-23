@@ -21,5 +21,10 @@ Each level can have multiple inlets/outlets, of different types or the same type
 * ## ## ## ##
 )
 
+Controls:
+For the current demo, use the arrow keys to move.
+Use 2ND to change a wire.
+There's no way to place or change other things, or at the very least I didn't code that in. Changing a block other than a wire may have undefined behavior.
+
 Behind-The-Scenes Ideas:
 Some kind of password system? Save the level in a custom list?
