@@ -2,14 +2,14 @@ Vars Used: (Lowercase/no description until used)
 A - temporary counter variable, used for Y
 B - temporary counter variable, used for X
 C - used for looping through each character of the textsprite
-d
-e
+D - currently selected square X
+E - currently selected square Y
 f
 g
 h
 i
 j
-k
+K - last key pressed
 l
 m
 n
@@ -25,9 +25,9 @@ w
 x
 y
 z
-[A] - temporary storage space for tiles, 4x3
+[A] - temporary storage space for tiles, 3x5
 str0
-Str1 - characters in textsprites, each of length 6 chars
+Str1 - characters in textsprites, each of length 7 chars
 str2
 str3
 str4
