@@ -23,7 +23,7 @@ Then
 // Solution: Place curved at (9,5) and T at (5,5)
 End
 For(C,1,dim(L1
-L1(C->[A]10fPart(L2(C)),(int(L2(C
+L1(C->[A](10fPart(L2(C)),(int(L2(C
 //If positions are expressed as y+.01x, change to:
 //L1(C->[A](100fPart(L2(C)),int(L2(C
 End
