@@ -2,7 +2,7 @@ DelVar [A]
 {8,11→dim([A]
 // these first two lines are to make sure every value is 0
 //Level 1:
-If "LEVEL 1"
+If 1
 Then
 {1,1,1,1,17,2,2,18->L1
 //sprite indexes.
@@ -14,7 +14,7 @@ Then
 End
 
 //Level 2:
-If "LEVEL 2"
+If 2
 Then
 {12,1,1,1,14,2,2,2,2,2,2,1,1,19->L1
 {5.01,5.02,5.03,5.04,1.05,2.05,3.05,4.05,6.05,7.05,8.05,9.06,9.07,9.08->L2
