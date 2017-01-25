@@ -26,6 +26,7 @@ x
 y
 z
 theta
+L3 - current tile in object preview
 [A] - temporary storage space for tiles, 8x11
 Pic0 - pic of blank board and number-less objects
 Pic1 - temporary pic, used for textsprites
