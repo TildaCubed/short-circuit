@@ -7,8 +7,8 @@ E - currently selected square Y
 f
 g
 h
-i
-j
+I - numbers of each object available, concatenated from left to right
+J - currently selected object
 K - last key pressed
 l
 m
@@ -25,7 +25,10 @@ w
 x
 y
 z
-[A] - temporary storage space for tiles, 3x5
+theta
+[A] - temporary storage space for tiles, 8x11
+Pic0 - pic of blank board and number-less objects
+Pic1 - temporary pic, used for textsprites
 str0
 Str1 - characters in textsprites, each of length 7 chars
 str2
