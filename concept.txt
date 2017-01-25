@@ -30,3 +30,16 @@ Use ALPHA to erase an object.
 
 Behind-The-Scenes Ideas:
 Some kind of password system? Save the level in a custom list?
+-Win Condition Loop:
+JWinslow23	This would have to be one where you actually see the circuit run
+JWinslow23	Like that one game Lightbot for TI-BASIC
+123outerme	Basically just a Repeat that keeps going until it hits an error or completes its run
+JWinslow23	But we'll go through it one step at a time
+123outerme	Yeah, I was thinking it might be pretty easy to at least get the code to start the run. You have an electric "spark" that starts in the input, with orientation going towards wherever it's facing
+JWinslow23	And yeah, that's exactly my vision
+123outerme	Then it just keeps moving down in a straight line until it hits an open circuit, a curved piece (which turns it at a 90 degree angle), T piece, gate, or diode
+JWinslow23	And if it moves into an empty square, or enters a square in a direction such that it physically is unable to act or move, it errors out with something
+JWinslow23	Like, no entering the side of receivers, and gates can't be entered through their output side
+123outerme	Yeah, that's it. Maybe for simplicitiy's sake we have it test multiple types of current one after another
+123outerme	But multiple types of one current should probably be tested simultaneously
+123outerme	So that gates, T pieces, etc function properly
