@@ -1,7 +1,7 @@
 Vars Used: (Lowercase/no description until used)
 A - temporary counter variable, used for Y
 B - temporary counter variable, used for X
-C - used for looping through each character of the textsprite
+C - used for looping through each character of the textsprite or looping through, placing tiles in current map
 D - currently selected square X
 E - currently selected square Y
 f
