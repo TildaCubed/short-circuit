@@ -63,7 +63,7 @@ If [A](A,B
 Then
 StorePic 1
 For(C,0,7
-Text(6A-6,6B-5+C,sub(Str1,8real([A](A,B)+C+1),1
+Text(6A-6,6B-5+C,sub(Str1,8real([A](A,B))+C+1,1
 End
 RecallPic 1
 End
@@ -85,7 +85,7 @@ getKey→K
 If Ans=21
 Then
 // Place the current block at the current square
-[i] + L₃(J→[A](D+1,E+1
+[i]+L₃(J→[A](D+1,E+1
 // Erase the current block at the current square
 For(A,1,5
 ⁻6D-A
