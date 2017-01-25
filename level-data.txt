@@ -6,8 +6,8 @@ If 1
 Then
 {1,1,1,1,17,2,2,18->L1
 //sprite indexes.
-{7.05,8.05,9.05,10.05,11.05,6.06,6.07,6.08->L2
-//positions. Currently expressed as x+.01y. Could be expressed y+.1x and save one byte per item, plus one byte in the L1(theta->... command
+{7.5,8.5,9.5,10.5,11.5,6.6,6.7,6.8->L2
+//positions. Currently expressed as x+.01y. Could be expressed y+.01x
 01000000->I
 // one curved piece
 // Solution: Place curved at (6,5). These coordinates are in the format of [A] (1,1 is top left)
@@ -16,14 +16,14 @@ End
 //Level 2:
 If 2
 Then
-{12,1,1,1,14,2,2,2,2,2,2,1,1,19->L1
-{5.01,5.02,5.03,5.04,1.05,2.05,3.05,4.05,6.05,7.05,8.05,9.06,9.07,9.08->L2
+{14,2,2,2,12,1,1,1,1,1,1,2,2,19->L1
+{5.1,5.2,5.3,5.4,1.5,2.5,3.5,4.5,6.5,7.5,8.5,8.6,9.7,9.8->L2
 01100000->I
 // one curved piece, one T piece
 // Solution: Place curved at (9,5) and T at (5,5)
 End
 For(C,1,dim(L1
-L1(C->[A](int(L2(C)),100fPart(L2(C
-//If positions are expressed as y+.1x, change to:
-//L1(theta->[A](10fPart(L2(theta)),int(L2(theta
+L1(C->[A](int(L2(C)),10fPart(L2(C
+//If positions are expressed as y+.01x, change to:
+//L1(C->[A](100fPart(L2(C)),int(L2(C
 End
