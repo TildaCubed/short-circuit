@@ -5,9 +5,11 @@ ZStandard
 ⁻72→Ymin
 ZInteger
 
-// Textsprites, each 7 characters
-// (5 in actual pixel width + 2 to mask extra pixels on the right)
-"       :::::   [ [   :²+Y    Y+²:   J+1:  :1+J   :] [   :²﹢²:   [ ]:  :1^1:  :X X:  [[[[(  [[[[:  Q[[[Q  Q[Q[Q  ([[[[  :[[[[  |u[[[|u  |u[|u[|u  []X[(  []X[:  Q[i]2[i]Q  Q[i]²[i]Q  ([X][  :[X][  |u!Î!|u  |u!1!|u  [XX[(  [XX[:  Q[2[Q  Q[²[Q  ([XX[  :[XX[  |u[Î[|u  |u[1[|u  []]](  Q]]]Q  (]]][  |u]]]|u  Xẋ]:+  '²1²'  +:]ẋX  plotsquare1²1plotsquare  []ẋ:+  '²ẋ²'  +:ẋ][  plotsquare1ẋ₁plotsquare  +[]:+  °:Î:°  +:][+  [e]:2:[e]  →Str1
+// Textsprites, each 8 characters
+// (5 in actual pixel width + 3 to mask extra pixels on the right)
+// (We won't need more, I swear)
+"        :::::    [ [    :²+Y     Y+²:    J+1:   :1+J    :] [    :²﹢²:    [ ]:   :1^1:   :X X:   [[[[(   [[[[:   Q[[[Q   Q[Q[Q   ([[[[   :[[[[   |u[[[|u   |u[|u[|u   []X[(   []X[:   Q[i]2[i]Q   Q[i]²[i]Q   ([X][   :[X][   |u!Î!|u   |u!1!|u   [XX[(   [XX[:   Q[2[Q   Q[²[Q   ([XX[   :[XX[   |u[Î[|u   |u[1[|u   []]](   Q]]]Q   (]]][   |u]]]|u   Xẋ]:+   '²1²'   +:]ẋX   plotsquare1²1plotsquare   []ẋ:+   '²ẋ²'   +:ẋ][   plotsquare1ẋ₁plotsquare   +[]:+   °:Î:°   +:][+   [e]:2:[e]   →Str1
+
 // We're keeping level data here for now
 // The level data is a certain number for a certain tile
 // 0    = empty
@@ -23,81 +25,159 @@ ZInteger
 // And, in the case of outlet sprites, there are inlets and outlets as well
 [[5,10,1,40,6][2,4,10,11,37][4,16,4,3,19→[A]
 {8,11→dim([A]
+// I is the amount of each item you have left
+// Each concatenated onto each other from left to right
+// I don't wanna waste a list on this
+12345678→I
 
-// These two For() loops draw the grid with spaces in it
-For(B,0,11
-If B≤8
-Line(0,⁻6B,66,⁻6B
-Line(6B,0,6B,⁻48
+//Draw the board
+For(A,0,11
+6A
+If A≤8
+Line(0,⁻Ans,66,⁻Ans
+Line(Ans,0,Ans,⁻48
 End
-For(B,0,10
-If B≤8
-Line(0,3-6B,66,3-6B,0
-Line(6B+3,0,6B+3,⁻48,0
+For(A,0,10
+6A+3
+If A<8
+Line(0,⁻Ans,66,⁻Ans,0
+Line(Ans,0,Ans,⁻48,0
 End
+{1,3,7,11,36,40,44,48→L₃
+For(A,1,8
+For(C,0,7
+Text(56,7A-1+C,sub(Str1,8Ans(A)+1+C,1
+End
+End
+// Pic0 will become the blank board and number-less objects
+// For fast reloading
+StorePic 0
 
-// These For() loops draw the current tile in its position
+// Draw the board from [A]
+For(A,1,8
+Text(49,7A,int(10fPart(I₁₀^(A-9
+End
 For(A,1,8
 For(B,1,11
 If [A](A,B
 Then
 StorePic 1
-// This For() loop does the textsprite magic
-For(C,0,6
-Text(6A-6,6B-5+C,sub(Str1,7[A](A,B)+C+1,1
+For(C,0,7
+Text(6A-6,6B-5+C,sub(Str1,8[A](A,B)+C+1,1
 End
 RecallPic 1
 End
 End
 End
 
-// To let you know the drawing is done (will be removed)
-Text(49,0,"Press ENTER
-Pause 
-
-// Current X and Y selection
+// D and E are the X and Y position of the cursor
+// Starting at 0
 DelVar DDelVar E
-StorePic 1
+// J is the position of the item cursor
+// Starting at 1
+1→J
 // Play until you press CLEAR
 Repeat K=45
+
+// Gather keypress
 getKey→K
-// If you pressed 2nd, do this
+// If you pressed 2ND
 If Ans=21
 Then
-1+[A](D+1,E+1
-// Cycle through the different wires
-// (undefined for any other type of block)
-Ans-12(Ans=12→[A](D+1,E+1
-RecallPic 1
-// Erase the current space
-For(B,0,4
-Line(6E+1,⁻6D-1-B,6E+5,⁻6D-1-B,0
+// Place the current block at the current square
+L₃(J→[A](D+1,E+1
+// Erase the current block at the current square
+For(A,1,5
+⁻6D-A
+Line(6E+1,Ans,6E+5,Ans,0
 End
+// Draw the current block at the current square
 StorePic 1
-// Draw the new tile in the current space
-For(C,0,6
-7[A](D+1,E+1
+For(C,0,7
+8[A](D+1,E+1
 If Ans
-Text(6D,6E+1+C,sub(Str1,Ans+C+1,1
+Text(6D,6E+1+C,sub(Str1,Ans+1+C,1
 End
 RecallPic 1
-StorePic 1
+// End code for pressing 2ND
 End
-
-// Erase a box around the current selected square
+// If you pressed ALPHA
+If K=31
+Then
+// Place an empty block at the current square
+0→[A](D+1,E+1
+// Erase the current block at the current square
+For(A,1,5
+⁻6D-A
+Line(6E+1,Ans,6E+5,Ans,0
+End
+// End code for pressing ALPHA
+End
+// If you pressed MODE
+If K=22
+Then
+// Load current block into Ans
+// (will make things easier)
+L₃(J
+// These next two lines change the current block with the next rotation
+// If J=1, it's a 2-cycle
+// Else, If J=4, it's a 1-cycle (unchanged)
+// Else, it's a 4 cycle
+If J≠4
+Ans+1-(2+2(J>1))(Ans=4J-2+21(J>4→L₃(J
+// Erase the current block preview
+For(A,0,4
+Line(7J-1,⁻57-A,7J+4,⁻57-A,0
+End
+// Draw the current block preview
+StorePic 1
+For(C,0,7
+Text(56,7J-1+C,sub(Str1,8Ans+1+C,1
+End
+RecallPic 1
+// End code for pressing MODE
+End
+// Draw cursor around block preview
+7J-2
+Line(Ans,⁻56,7J+4,⁻56
+Line(Ans,⁻62,7J+4,⁻62
+Line(Ans,⁻56,Ans,⁻62
+Line(7J+4,⁻56,7J+4,⁻62
+// If you pressed + or -
+If 5=abs(K-90
+Then
+// Erase cursor around block preview
+Line(Ans,⁻56,7J+4,⁻56,0
+Line(Ans,⁻62,7J+4,⁻62,0
+Line(Ans,⁻56,Ans,⁻62,0
+Line(7J+4,⁻56,7J+4,⁻62,0
+// Change J based on keypress
+J+(K=95 and J<8)-(K=85 and J>1→J
+// End code for pressing + or -
+End
+// Draw cursor around selected square
+⁻6D-6
 Line(6E,⁻6D,6E+6,⁻6D,0
-Line(6E,⁻6D,6E,⁻6-6D,0
-Line(6E+6,⁻6D,6E+6,⁻6-6D,0
-Line(6E,⁻6-6D,6E+6,⁻6-6D,0
-// If you pressed an arrow key, do this
+Line(6E,Ans,6E+6,Ans,0
+Line(6E,⁻6D,6E,Ans,0
+Line(6E+6,⁻6D,6E+6,Ans,0
+// If you pressed any arrow key
 If K=34 or 1≥abs(K-25
 Then
-// Re-draw the border around that square
-RecallPic 1
-// Update X and Y positions
-D+(K=34)-(K=25→D
-E+(K=26)-(K=24→E
+// Erase cursor around selected square
+Line(6E,⁻6D,6E+6,⁻6D
+Line(6E,Ans,6E+6,Ans
+Line(6E,⁻6D,6E,Ans
+Line(6E+6,⁻6D,6E+6,Ans
+Pt-Off(6E+3,⁻6D
+Pt-Off(6E+3,Ans
+Pt-Off(6E,⁻6D-3
+Pt-Off(6E+6,⁻6D-3
+// Change D and E based on keypress
+D+(K=34 and D<7)-(K=25 and D→D
+E+(K=26 and E<10)-(K=24 and E→E
+// End code for pressing any arrow key
 End
 
-// End Repeat loop
+// End game loop
 End
