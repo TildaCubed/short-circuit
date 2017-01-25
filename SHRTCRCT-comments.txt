@@ -63,7 +63,7 @@ If [A](A,B
 Then
 StorePic 1
 For(C,0,7
-Text(6A-6,6B-5+C,sub(Str1,8[A](A,B)+C+1,1
+Text(6A-6,6B-5+C,sub(Str1,8real([A](A,B)+C+1),1
 End
 RecallPic 1
 End
@@ -85,7 +85,7 @@ getKey→K
 If Ans=21
 Then
 // Place the current block at the current square
-L₃(J→[A](D+1,E+1
+[i] + L₃(J→[A](D+1,E+1
 // Erase the current block at the current square
 For(A,1,5
 ⁻6D-A
@@ -94,7 +94,7 @@ End
 // Draw the current block at the current square
 StorePic 1
 For(C,0,7
-8[A](D+1,E+1
+8real([A](D+1,E+1
 If Ans
 Text(6D,6E+1+C,sub(Str1,Ans+1+C,1
 End
@@ -102,7 +102,7 @@ RecallPic 1
 // End code for pressing 2ND
 End
 // If you pressed ALPHA
-If K=31
+If K=31 and imag([A](D+1,E+1)))
 Then
 // Place an empty block at the current square
 0→[A](D+1,E+1
