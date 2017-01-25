@@ -22,7 +22,7 @@ Then
 // one curved piece, one T piece
 // Solution: Place curved at (9,5) and T at (5,5)
 End
-For(C,1,length(L1
+For(C,1,dim(L1
 L1(C->[A](int(L2(C)),100fPart(L2(C
 //If positions are expressed as y+.1x, change to:
 //L1(theta->[A](10fPart(L2(theta)),int(L2(theta
