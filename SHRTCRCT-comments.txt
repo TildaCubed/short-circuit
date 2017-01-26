@@ -43,8 +43,8 @@ If 2<1
 Then
 {14,2,2,2,12,1,1,1,1,1,1,2,2,19->L1
 {5.1,5.2,5.3,5.4,1.5,2.5,3.5,4.5,6.5,7.5,8.5,9.6,9.7,9.8->L2
-01100000->I
-// one curved piece, one T piece
+01001000->I
+// one curved piece, one AND gate
 // Solution: Place curved at (9,5) and T at (5,5)
 End
 For(C,1,dim(L1
