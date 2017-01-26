@@ -108,9 +108,16 @@ Repeat K=45
 
 // Gather keypress
 getKey→K
-// If you pressed 2ND
-If Ans=21 and fPart([A](D+1,E+1)) or not([A](D+1,E+1
+// If you pressed 2ND and the space is occupied by either nothing or a user-placed object, and you have one of the selected type
+If Ans=21 and int(10fPart(I10^(J-9))) and (fPart([A](D+1,E+1)) or not([A](D+1,E+1
 Then
+//If an object was already there, give it back to the counter
+//  If [A](D+1,E+1
+//  Then
+//  int([A](D+1,E+1->A
+//  If 9<int(10fPart(I10^(A-9
+//  I+(1*10^(A-9->I
+//  End
 // Place the current block at the current square
 .1+L₃(J→[A](D+1,E+1
 // Erase the current block at the current square
@@ -126,11 +133,16 @@ If Ans
 Text(6D,6E+1+C,sub(Str1,Ans+1+C,1
 End
 RecallPic 1
+//Decrement item counter for object just placed
+//  I-(1*10^(int([A](D+1,E+1))-9->I
 // End code for pressing 2ND
 End
 // If you pressed ALPHA and the "user-placed" flag on the selected block is on
 If K=31 and fPart([A](D+1,E+1))
 Then
+//Give the object back
+//  If 9<int(10fPart(I10^(A-9
+//  I+(1*10^(A-9
 // Place an empty block at the current square
 0→[A](D+1,E+1
 // Erase the current block at the current square
@@ -138,6 +150,7 @@ For(A,1,5
 ⁻6D-A
 Line(6E+1,Ans,6E+5,Ans,0
 End
+int([A](D+1,E+1->A
 // End code for pressing ALPHA
 End
 // If you pressed MODE
