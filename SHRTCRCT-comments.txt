@@ -7,7 +7,6 @@ ZInteger
 
 // Textsprites, each 8 characters
 // (5 in actual pixel width + 3 to mask extra pixels on the right)
-// (We won't need more, I swear)
 "        :::::    [ [    :²+Y     Y+²:    J+1:   :1+J    :] [    :²﹢²:    [ ]:   :1^1:   :X X:   [[[[(   [[[[:   Q[[[Q   Q[Q[Q   ([[[[   :[[[[   |u[[[|u   |u[|u[|u   []X[(   []X[:   Q[i]2[i]Q   Q[i]²[i]Q   ([X][   :[X][   |u!Î!|u   |u!1!|u   [XX[(   [XX[:   Q[2[Q   Q[²[Q   ([XX[   :[XX[   |u[Î[|u   |u[1[|u   []]](   Q]]]Q   (]]][   |u]]]|u   Xẋ]:+   '²1²'   +:]ẋX   plotsquare1²1plotsquare   []ẋ:+   '²ẋ²'   +:ẋ][   plotsquare1ẋ\1plotsquare   +[]:+   °:Î:°   +:][+   [e]:2:[e]   →Str1
 
 // We're keeping level data here for now
@@ -136,7 +135,7 @@ I-₁₀^(8-int(.25(Ans-16+21(Ans≤11→I
 // End code for pressing 2ND
 End
 // If you pressed ALPHA and the "user-placed" flag on the selected block is on
-If K=31 and fPart([A](D+1,E+1))
+If K=31 and fPart([A](D+1,E+1
 Then
 //Give the object back
 int([A](D+1,E+1
@@ -148,7 +147,6 @@ For(A,1,5
 ⁻6D-A
 Line(6E+1,Ans,6E+5,Ans,0
 End
-int([A](D+1,E+1→A
 // End code for pressing ALPHA
 End
 // If you pressed MODE
