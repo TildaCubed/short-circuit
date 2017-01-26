@@ -8,7 +8,7 @@ ZInteger
 // Textsprites, each 8 characters
 // (5 in actual pixel width + 3 to mask extra pixels on the right)
 // (We won't need more, I swear)
-"        :::::    [ [    :²+Y     Y+²:    J+1:   :1+J    :] [    :²﹢²:    [ ]:   :1^1:   :X X:   [[[[(   [[[[:   Q[[[Q   Q[Q[Q   ([[[[   :[[[[   |u[[[|u   |u[|u[|u   []X[(   []X[:   Q[i]2[i]Q   Q[i]²[i]Q   ([X][   :[X][   |u!Î!|u   |u!1!|u   [XX[(   [XX[:   Q[2[Q   Q[²[Q   ([XX[   :[XX[   |u[Î[|u   |u[1[|u   []]](   Q]]]Q   (]]][   |u]]]|u   Xẋ]:+   '²1²'   +:]ẋX   plotsquare1²1plotsquare   []ẋ:+   '²ẋ²'   +:ẋ][   plotsquare1ẋ₁plotsquare   +[]:+   °:Î:°   +:][+   [e]:2:[e]   →Str1
+"        :::::    [ [    :²+Y     Y+²:    J+1:   :1+J    :] [    :²﹢²:    [ ]:   :1^1:   :X X:   [[[[(   [[[[:   Q[[[Q   Q[Q[Q   ([[[[   :[[[[   |u[[[|u   |u[|u[|u   []X[(   []X[:   Q[i]2[i]Q   Q[i]²[i]Q   ([X][   :[X][   |u!Î!|u   |u!1!|u   [XX[(   [XX[:   Q[2[Q   Q[²[Q   ([XX[   :[XX[   |u[Î[|u   |u[1[|u   []]](   Q]]]Q   (]]][   |u]]]|u   Xẋ]:+   '²1²'   +:]ẋX   plotsquare1²1plotsquare   []ẋ:+   '²ẋ²'   +:ẋ][   plotsquare1ẋ\1plotsquare   +[]:+   °:Î:°   +:][+   [e]:2:[e]   →Str1
 
 // We're keeping level data here for now
 // The level data is a certain number for a certain tile
@@ -23,41 +23,38 @@ ZInteger
 // 48-51 = diode
 // Different tiles are at different orientations
 // And, in the case of outlet sprites, there are inlets and outlets as well
-//[[5,10,1,40,6][2,4,10,11,37][4,16,4,3,19→[A]
 DelVar [A]
 {8,11→dim([A]
 // these first two lines are to make sure every value is 0
 //Level 1:
 If 1
 Then
-{1,1,1,1,17,2,2,18->L1
+{1,1,1,1,17,2,2,18→L₁
 //sprite indexes.
-{7.5,8.5,9.5,10.5,11.5,6.6,6.7,6.8->L2
+{7.5,8.5,9.5,10.5,11.5,6.6,6.7,6.8→L₂
 //positions. Currently expressed as x+.1y. Could be expressed y+.01x
-01000000->I
+01000000→I
 // one curved piece
 // Solution: Place curved at (6,5). These coordinates are in the format of [A] (1,1 is top left)
 End
 //Level 2:
 If 2<1
 Then
-{14,2,2,2,12,1,1,1,1,1,1,2,2,19->L1
-{5.1,5.2,5.3,5.4,1.5,2.5,3.5,4.5,6.5,7.5,8.5,9.6,9.7,9.8->L2
-01001000->I
+{14,2,2,2,12,1,1,1,1,1,1,2,2,19→L₁
+{5.1,5.2,5.3,5.4,1.5,2.5,3.5,4.5,6.5,7.5,8.5,9.6,9.7,9.8→L₂
+01001000→I
 // one curved piece, one AND gate
 // Solution: Place curved at (9,5) and T at (5,5)
 End
-For(C,1,dim(L1
-L1(C->[A](10fPart(L2(C)),(int(L2(C
+For(C,1,dim(L₁
+L₁(C→[A](10fPart(L₂(C)),(int(L₂(C
 //If positions are expressed as y+.01x, change to:
 //L1(C->[A](100fPart(L2(C)),int(L2(C
 End
 // I is the amount of each item you have left
 // Each concatenated onto each other from left to right
-// I don't wanna waste a list on this
-//12345678→I
 
-//Draw the board
+// Draw the board
 For(A,0,11
 6A
 If A≤8
@@ -80,10 +77,11 @@ End
 // For fast reloading
 StorePic 0
 
-// Draw the board from [A]
+// Draw the numbers of each object
 For(A,1,8
 Text(49,7A,int(10fPart(I₁₀^(A-9
 End
+// Draw the board from [A]
 For(A,1,8
 For(B,1,11
 If [A](A,B
@@ -109,15 +107,14 @@ Repeat K=45
 // Gather keypress
 getKey→K
 // If you pressed 2ND and the space is occupied by either nothing or a user-placed object, and you have one of the selected type
-If Ans=21 and int(10fPart(I10^(J-9))) and (fPart([A](D+1,E+1)) or not([A](D+1,E+1
+If Ans=21 and int(10fPart(I₁₀^(J-9))) and (fPart([A](D+1,E+1)) or not([A](D+1,E+1
 Then
-//If an object was already there, give it back to the counter
-//  If [A](D+1,E+1
-//  Then
-//  int([A](D+1,E+1->A
-//  If 9<int(10fPart(I10^(A-9
-//  I+(1*10^(A-9->I
-//  End
+// If an object was already there, give it back to the counter
+If [A](D+1,E+1
+Then
+int([A](D+1,E+1
+I+₁₀^(8-int(.25(Ans-16+21(Ans≤11→I
+End
 // Place the current block at the current square
 .1+L₃(J→[A](D+1,E+1
 // Erase the current block at the current square
@@ -134,15 +131,16 @@ Text(6D,6E+1+C,sub(Str1,Ans+1+C,1
 End
 RecallPic 1
 //Decrement item counter for object just placed
-//  I-(1*10^(int([A](D+1,E+1))-9->I
+int([A](D+1,E+1
+I-₁₀^(8-int(.25(Ans-16+21(Ans≤11→I
 // End code for pressing 2ND
 End
 // If you pressed ALPHA and the "user-placed" flag on the selected block is on
 If K=31 and fPart([A](D+1,E+1))
 Then
 //Give the object back
-//  If 9<int(10fPart(I10^(A-9
-//  I+(1*10^(A-9
+int([A](D+1,E+1
+I+₁₀^(8-int(.25(Ans-16+21(Ans≤11→I
 // Place an empty block at the current square
 0→[A](D+1,E+1
 // Erase the current block at the current square
@@ -150,7 +148,7 @@ For(A,1,5
 ⁻6D-A
 Line(6E+1,Ans,6E+5,Ans,0
 End
-int([A](D+1,E+1->A
+int([A](D+1,E+1→A
 // End code for pressing ALPHA
 End
 // If you pressed MODE
@@ -218,6 +216,8 @@ D+(K=34 and D<7)-(K=25 and D→D
 E+(K=26 and E<10)-(K=24 and E→E
 // End code for pressing any arrow key
 End
+// Draw number of current object
+Text(49,7J,int(10fPart(I₁₀^(J-9
 
 // End game loop
 End
