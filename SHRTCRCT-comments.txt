@@ -109,7 +109,7 @@ Repeat K=45
 // Gather keypress
 getKey→K
 // If you pressed 2ND
-If Ans=21
+If Ans=21 and fPart([A](D+1,E+1)) or not([A](D+1,E+1
 Then
 // Place the current block at the current square
 .1+L₃(J→[A](D+1,E+1
@@ -128,7 +128,7 @@ End
 RecallPic 1
 // End code for pressing 2ND
 End
-// If you pressed ALPHA
+// If you pressed ALPHA and the "user-placed" flag on the selected block is on
 If K=31 and fPart([A](D+1,E+1))
 Then
 // Place an empty block at the current square
