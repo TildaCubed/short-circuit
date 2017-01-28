@@ -109,10 +109,13 @@ getKey→K
 If Ans=21 and int(10fPart(I₁₀^(J-9))) and (fPart([A](D+1,E+1)) or not([A](D+1,E+1
 Then
 // If an object was already there, give it back to the counter
-If [A](D+1,E+1
-Then
 int([A](D+1,E+1
-I+₁₀^(8-int(.25(Ans-16+21(Ans≤11→I
+If Ans
+Then
+int(.25(Ans-16+21(Ans≤11→C
+I+₁₀^(8-Ans→I
+If C≠J
+Text(49,7C,int(10fPart(I₁₀^(C-9
 End
 // Place the current block at the current square
 .1+L₃(J→[A](D+1,E+1
@@ -219,3 +222,120 @@ Text(49,7J,int(10fPart(I₁₀^(J-9
 
 // End game loop
 End
+// Erase cursor
+⁻6D-6
+Line(6E,⁻6D,6E+6,⁻6D
+Line(6E,Ans,6E+6,Ans
+Line(6E,⁻6D,6E,Ans
+Line(6E+6,⁻6D,6E+6,Ans
+Pxl-Off(6D,6E+3
+Pxl-Off(⁻Ans,6E+3
+Pxl-Off(6D+3,6E
+Pxl-Off(6D+3,6E+6
+
+
+// Erase list of currents
+0→dim(L₁
+
+// Gather list of currents
+// There are 5 elements per current
+// X-pos, Y-pos, current type, current direction, signal on/off
+// X-pos/Y-pos: X and Y on-screen
+// current type: Which outlet the current belongs to
+// current direction: 0 is R, 1 is D, 2 is L, 3 is U
+// signal on/off: boolean 0 or 1
+For(A,1,8
+For(B,1,11
+[A](A,B→C
+If Ans
+Then
+If 11≥abs(Ans-23) and not(2fPart(.5Ans
+Then
+5+dim(L₁→dim(L₁
+1→L₁(Ans
+int(C/8-1.5→L₁(dim(L₁)-2
+4fPart((C-4)/8→L₁(dim(L₁)-1
+6B-6+3abs(2-Ans→L₁(dim(L₁)-4
+6A-3abs(1-L₁(dim(L₁)-1→L₁(dim(L₁)-3
+End
+End
+End
+End
+
+// F detects whether or not you failed
+// 0 if not failed, 1 if failed
+// G is the counter for the current drawing
+// Runs from 0 to 5, used for drawing current
+// W detects whether or not you won (not used yet)
+// 0 if not won, 1 if won
+DelVar FDelVar GDelVar W
+// Loop until you happen to win or fail
+Repeat W or F
+// Iterate 6 pixels for each block
+For(A,0,5
+// Flash each "spark"
+StorePic 1
+For(B,1,dim(L₁)/5
+Pt-Off(L₁(5B-4),⁻L₁(5B-3),2
+Pt-On(L₁(5B-4),⁻L₁(5B-3),3
+End
+rand(5
+For(B,1,dim(L₁)/5
+Pt-Off(L₁(5B-4),⁻L₁(5B-3),3
+End
+RecallPic 1
+// Loop through each current and advance them one iteration
+For(B,1,dim(L₁)/5
+L₁(5B-2
+// Draw the trail of the current...uh...current
+If Ans≠not(Ans)+(Ans+1)fPart(G/(Ans+1
+Pxl-On(L₁(5B-3),L₁(5B-4
+
+// This is the part we'll need to worry about
+If A
+Then
+// C will become the current tile
+int([A](1+int(L₁(5B-3)/6),1+int(L₁(5B-4)/6→C
+// Behavior for tile 0 (empty)
+not(Ans→F
+// Behavior for tiles 1-2 (straight wires)
+If C and C≤2
+C-1=not(fPart(.5L₁(5B-1→F
+// Behavior for tiles 3-6 (curved wires)
+If C≥3 and C≤6
+Then
+C-2abs(A-3
+If 1≥abs(A-3
+4fPart(4ˉ¹(L₁(5B-1)+3+2(L₁(5B-1)=Ans-4(Ans≥4→L₁(5B-1
+{C,C-1
+A=1 and max(L₁(5B-1)=Ans-4(Ans≥4→F
+End
+// End behavior code
+End
+
+// Advance the current one pixel in its direction
+L₁(5B-3)+1-abs(1-L₁(5B-1→L₁(5B-3
+L₁(5B-4)-1+abs(2-L₁(5B-1→L₁(5B-4
+// Prevent the current from going outside of boundaries
+F or Ans<0 or Ans>66 or L₁(5B-3)<0 or 48<L₁(5B-3→F
+// Make absolutely sure both loops stop immediately if something failed
+If Ans
+6→A
+If F
+dim(L₁→B
+// End 6-pixel iteration
+End
+// Increment drawing counter
+G+1-6(G=5→G
+// End square iteration
+End
+// If you get rid of the While 0 loop,
+// the game pauses after each current is iterated
+While 0
+Pause 
+End
+// End current running loop
+End
+// Display message if you failed
+If F
+Pause "FAIL!
