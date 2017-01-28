@@ -27,6 +27,7 @@ Use PLUS and MINUS to go through your objects.
 Use MODE to rotate the selected objects.
 Use 2ND to place an object.
 Use ALPHA to erase an object.
+Once you press CLEAR, the current will run until it can't.
 
 Behind-The-Scenes Ideas:
 Some kind of password system? Save the level in a custom list?
