@@ -1,11 +1,11 @@
 Vars Used: (Lowercase/no description until used)
-A - temporary counter variable, used for Y
-B - temporary counter variable, used for X
-C - used for looping through each character of the textsprite or looping through, placing tiles in current map
+A - temporary counter variable, usually used for Y
+B - temporary counter variable, usually used for X
+C - temporary variable, usually multi-purpose
 D - currently selected square X
 E - currently selected square Y
-f
-g
+F - has simulation failed?
+G - drawing counter for currents
 h
 I - numbers of each object available, concatenated from left to right
 J - currently selected object
@@ -21,17 +21,18 @@ s
 t
 u
 v
-w
+W - has simulation ended successfully?
 x
 y
 z
 theta
+L1 - list of information about currents
 L3 - current tile in object preview
 [A] - temporary storage space for tiles, 8x11
 Pic0 - pic of blank board and number-less objects
 Pic1 - temporary pic, used for textsprites
 str0
-Str1 - characters in textsprites, each of length 7 chars
+Str1 - characters in textsprites, each of length 8 chars
 str2
 str3
 str4
