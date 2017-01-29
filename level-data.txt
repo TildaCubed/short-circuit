@@ -11,6 +11,7 @@ Then
 01000000->I
 // one curved piece
 // Solution: Place curved at (6,5). These coordinates are in the format of [A] (1,1 is top left)
+"A CURVED PIECE  PLACED WELL WILLTURN THINGS    AROUND.->Str2
 End
 
 //Level 2:
@@ -20,7 +21,8 @@ Then
 {5.1,5.2,5.3,5.4,1.5,2.5,3.5,4.5,6.5,7.5,8.5,9.6,9.7,9.8->L2
 01001000->I
 // one curved piece, one AND gate
-// Solution: Place curved at (9,5) and T at (5,5)
+// Solution: Place curved at (9,5) and AND gate at (5,5)
+"THE and GATE    TAKES TWO ON    SIGNALS AND     MAKES THEM ONE. OTHERWISE SENDS NOTHING.->Str2
 End
 For(C,1,dim(L1
 L1(C->[A](10fPart(L2(C)),(int(L2(C
