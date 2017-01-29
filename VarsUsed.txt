@@ -33,7 +33,7 @@ Pic0 - pic of blank board and number-less objects
 Pic1 - temporary pic, used for textsprites
 str0
 Str1 - characters in textsprites, each of length 8 chars
-str2
+Str2 - level intro text
 str3
 str4
 str5
