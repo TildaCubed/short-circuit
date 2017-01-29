@@ -35,6 +35,7 @@ Then
 01000000→I
 // one curved piece
 // Solution: Place curved at (6,5). These coordinates are in the format of [A] (1,1 is top left)
+"A CURVED PIECE  PLACED WELL WILLTURN THINGS    AROUND.->Str2
 End
 //Level 2:
 If 2<1
@@ -44,12 +45,16 @@ Then
 01001000→I
 // one curved piece, one AND gate
 // Solution: Place curved at (9,5) and T at (5,5)
+"THE and GATE    TAKES TWO ON    SIGNALS AND     MAKES THEM ONE.->Str2
 End
 For(C,1,dim(L₁
 L₁(C→[A](10fPart(L₂(C)),(int(L₂(C
 //If positions are expressed as y+.01x, change to:
 //L1(C->[A](100fPart(L2(C)),int(L2(C
 End
+Output(1,1,Str2
+Pause 
+ClrHome
 // I is the amount of each item you have left
 // Each concatenated onto each other from left to right
 
