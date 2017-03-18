@@ -5,8 +5,8 @@ C - temporary variable, usually multi-purpose
 D - currently selected square X
 E - currently selected square Y
 F - has simulation failed?
-G - drawing counter for currents
-h
+G - drawing counter for currents (not sure if needed)
+H - temporary counter variable, used for iterating through objects (not sure if needed)
 I - numbers of each object available, concatenated from left to right
 J - currently selected object
 K - last key pressed
